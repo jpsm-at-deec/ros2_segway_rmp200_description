@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="myfirst">
+  <link name="base_link">
+    <visual>        
+      <origin xyz="0 0 -0.08" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ros2_segway_rmp200_description/meshes/rmp200_nowheels.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.175" rpy="0 0 0" />
+      <geometry>
+        <box size="0.3 0.4 0.65"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="80" />
+      <origin xyz="0 0 0.3" />
+      <inertia 
+        ixx="24.0" ixy="0.0" ixz="0.0"
+        iyy="24.0" iyz="0.0" 
+        izz="8.0" />
+    </inertial>
+  </link>
+  <link name="left_wheel_link">
+    <inertial>
+      <mass value="5" />
+      <origin xyz=" 0 0 0 " />
+      <inertia  ixx="0.076" ixy="0.0" ixz="0.0"
+                iyy="0.144" iyz="0.0"
+                izz="0.076" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0.2725 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ros2_segway_rmp200_description/meshes/wheel.dae" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
+      <geometry>
+        <cylinder length="0.001" radius="0.24"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_wheel_link">
+    <inertial>
+      <mass value="5" />
+      <origin xyz=" 0 0 0 " />
+      <inertia  ixx="0.076" ixy="0.0" ixz="0.0"
+                iyy="0.144" iyz="0.0"
+                izz="0.076" />
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.2725 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ros2_segway_rmp200_description/meshes/wheel.dae" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
+      <geometry>
+        <cylinder length="0.001" radius="0.24"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_to_left_wheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+  </joint>
+  <joint name="base_to_right_wheel" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_wheel_link"/>
+  </joint>
+</robot>
+
+
+
+    
